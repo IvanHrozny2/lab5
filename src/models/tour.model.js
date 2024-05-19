@@ -5,4 +5,4 @@ class Tour {
     }
   }
   
-  module.exports = Tour;
+  export default Tour;
