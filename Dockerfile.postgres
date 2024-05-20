@@ -1,0 +1,7 @@
+FROM postgres:latest
+
+ENV POSTGRES_DB=blog
+ENV POSTGRES_USER=user
+ENV POSTGRES_PASSWORD=password
+
+EXPOSE 5432
