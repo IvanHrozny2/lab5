@@ -1,19 +1,18 @@
 import express from 'express';
-
-import userRouter from './resources/users/user.router.js';
+import { json } from 'body-parser';
+import tourRouter from './routes/tour.router';
+import scheduleRouter from './routes/schedule.router';
+import priceRouter from './routes/price.router';
 
 const app = express();
+const PORT = 4000;
 
-app.use(express.json());
+app.use(json());
 
-app.use('/', (req, res, next) => {
-  if (req.originalUrl === '/') {
-    res.send('Service is running!');
-    return;
-  }
-  next();
+app.use('/tours', tourRouter);
+app.use('/schedules', scheduleRouter);
+app.use('/prices', priceRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
-
-app.use('/users', userRouter);
-
-export default app;
